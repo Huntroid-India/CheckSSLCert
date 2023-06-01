@@ -1,13 +1,13 @@
 # SSLChecker
 
-[![Huntroid-India - SSLCheckerr](https://img.shields.io/static/v1?label=Huntroid-India&message=SSLCheckerr&color=blue&logo=github)](https://github.com/Huntroid-India/SSLCheckerr "Go to GitHub repo")
-[![stars - SSLCheckerr](https://img.shields.io/github/stars/Huntroid-India/SSLCheckerr?style=social)](https://github.com/Huntroid-India/SSLCheckerr)
-[![forks - SSLCheckerr](https://img.shields.io/github/forks/Huntroid-India/SSLCheckerr?style=social)](https://github.com/Huntroid-India/SSLCheckerr)
+[![Huntroid-India - SSLCheckerr](https://img.shields.io/static/v1?label=Huntroid-India&message=SSLChecker&color=blue&logo=github)](https://github.com/Huntroid-India/SSLChecker "Go to GitHub repo")
+[![stars - SSLChecker](https://img.shields.io/github/stars/Huntroid-India/SSLChecker?style=social)](https://github.com/Huntroid-India/SSLChecker)
+[![forks - SSLChecker](https://img.shields.io/github/forks/Huntroid-India/SSLChecker?style=social)](https://github.com/Huntroid-India/SSLChecker)
 
 
-[![GitHub release](https://img.shields.io/github/release/Huntroid-India/SSLCheckerr?include_prereleases=&sort=semver&color=blue)](https://github.com/Huntroid-India/SSLCheckerr/releases/)
+[![GitHub release](https://img.shields.io/github/release/Huntroid-India/SSLChecker?include_prereleases=&sort=semver&color=blue)](https://github.com/Huntroid-India/SSLChecker/releases/)
 [![License](https://img.shields.io/badge/License-MIT-blue)](#license)
-[![issues - SSLCheckerr](https://img.shields.io/github/issues/Huntroid-India/SSLCheckerr)](https://github.com/Huntroid-India/SSLCheckerr/issues)
+[![issues - SSLCheckerr](https://img.shields.io/github/issues/Huntroid-India/SSLChecker)](https://github.com/Huntroid-India/SSLChecker/issues)
 
 SSLChecker is a Python library that allows you to check the SSL certificate status for single or multiple domains. It provides an easy way to determine if an SSL certificate is active, the number of days left until it expires, and additional certificate information. 
 
