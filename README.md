@@ -61,7 +61,7 @@ checker.save_report("C:\Users\YourUsername\Desktop", "csv")
 ### Domain List File Format
 The domain list file should be in CSV format. The first row should contain the column names. Here's a sample domain list file:
 
-[![CSV - Documentation](https://img.shields.io/badge/Download-CSV-blue?style=for-the-badge)](/domain_list.csv/ "Go to project documentation")
+[![CSV - Documentation](https://img.shields.io/badge/Download-CSV-blue?style=for-the-badge)](https://raw.githubusercontent.com/Huntroid-India/CheckSSLCert/main/domain_list.csv "Go to project documentation")
 
 #### File Format
 
