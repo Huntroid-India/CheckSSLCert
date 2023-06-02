@@ -1,3 +1,19 @@
+Metadata-Version: 2.1
+Name: CheckSSLCert
+Version: 0.0.1
+Summary: CheckSSLCert is a Python library that allows you to check the SSL certificate status.
+Home-page: https://github.com/Huntroid-India/CheckSSLCert
+Author: Huntriod
+Author-email: srimath8@gmail.com
+License: MIT
+Project-URL: Bug Tracker, https://github.com/Huntroid-India/CheckSSLCert/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 # CheckSSLCert
 [![Made with Python](https://img.shields.io/badge/Python->=3.6-blue?logo=python&logoColor=white)](https://python.org "Go to Python homepage")
 

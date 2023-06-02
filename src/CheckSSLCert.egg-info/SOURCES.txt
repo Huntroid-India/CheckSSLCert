@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+src/CheckSSLCert/__init__.py
+src/CheckSSLCert/validate.py
+src/CheckSSLCert.egg-info/PKG-INFO
+src/CheckSSLCert.egg-info/SOURCES.txt
+src/CheckSSLCert.egg-info/dependency_links.txt
+src/CheckSSLCert.egg-info/top_level.txt
