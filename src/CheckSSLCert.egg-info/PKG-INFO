@@ -1,12 +1,14 @@
 Metadata-Version: 2.1
 Name: CheckSSLCert
-Version: 0.0.1
+Version: 0.1.0
 Summary: CheckSSLCert is a Python library that allows you to check the SSL certificate status.
 Home-page: https://github.com/Huntroid-India/CheckSSLCert
-Author: Huntriod
+Author: Srimath
 Author-email: srimath8@gmail.com
 License: MIT
 Project-URL: Bug Tracker, https://github.com/Huntroid-India/CheckSSLCert/issues
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
@@ -66,6 +68,10 @@ checker = validate.from_file("domain_list.csv")
 
 # Print the SSL certificate status report to the console
 checker.print_report()
+
+# Send the SSL certificate status report to an email address
+checker.send_report("sender_address", "sender_password", "receiver_address", "Subject")
+# Note: It is recommended to use an app password for the sender password. It only works with Gmail(Sender).
 
 # Save the SSL certificate status report to a file (HTML format)
 checker.save_report("C:\Users\YourUsername\Desktop") # By default HTML is selected

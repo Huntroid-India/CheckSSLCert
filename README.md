@@ -51,6 +51,10 @@ checker = validate.from_file("domain_list.csv")
 # Print the SSL certificate status report to the console
 checker.print_report()
 
+# Send the SSL certificate status report to an email address
+checker.send_report("sender_address", "sender_password", "receiver_address", "Subject")
+# Note: It is recommended to use an app password for the sender password. It only works with Gmail(Sender).
+
 # Save the SSL certificate status report to a file (HTML format)
 checker.save_report("C:\Users\YourUsername\Desktop") # By default HTML is selected
 checker.save_report("C:\Users\YourUsername\Desktop", "html")
