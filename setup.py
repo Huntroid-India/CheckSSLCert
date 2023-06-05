@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name='CheckSSLCert',
-    version='0.1.0',
+    version='0.1.1',
     url='https://github.com/Huntroid-India/CheckSSLCert',
     project_urls={
         "Bug Tracker": "https://github.com/Huntroid-India/CheckSSLCert/issues",

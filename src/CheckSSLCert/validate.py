@@ -3,7 +3,8 @@ class from_file:
     def __init__(self, path):
         import datetime
         self.__path = path
-        self.__subject = "SSL Certificate Status Report on " + datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S %p %z")
+        self.__subject = "SSL Certificate Status Report on " + datetime.datetime.now().strftime(
+            "%d-%m-%Y %H:%M:%S %p %z")
         self.__d_sno = []
         self.__d_name = []
         self.__d_link = []
@@ -112,43 +113,81 @@ class from_file:
         print("Content Composed")
         return email_body
 
-    def send_report(self, sender, pwd, receiver, subject):
+    def send_report(self, mail_config, IsAll=True):
         import smtplib, ssl
         from email.mime.text import MIMEText
         from email.mime.multipart import MIMEMultipart
+        try:
+            smtp_server = mail_config['smtp_server']
+            port = mail_config['port']
+            sender = mail_config['sender']
+            pwd = mail_config['password']
+            receiver = mail_config['receiver']
+            subject = mail_config['subject']
+        except KeyError:
+            print("Error : Invalid Mail Config")
+            return
 
         try:
-            self.__mail_data = self.__compose_email_with_table(self.__getrawdata())
-            context = ssl.create_default_context()
-            with smtplib.SMTP('smtp.gmail.com', 587) as server:
-                print("Sending Email")
-                server.ehlo()
-                server.starttls(context=context)
-                server.ehlo()
-                server.ehlo()
-                server.login(sender, pwd, initial_response_ok=True)
-                message = MIMEMultipart()
-                message['From'] = sender
-                message['To'] = receiver
-                message['Subject'] = subject
-                message.attach(MIMEText(self.__getmaildata(), 'html'))
-                text = message.as_string()
-                server.ehlo()
-                server.sendmail(sender, receiver, text)
-                server.quit()
-                print("Email Sent")
+            self.__mail_data = self.__compose_email_with_table(self.__getrawdata(IsAll))
+            if port == 465:
+                context = ssl.create_default_context()
+                with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+                    print("Sending Email")
+                    server.login(sender, pwd, initial_response_ok=True)
+                    message = MIMEMultipart()
+                    message['From'] = sender
+                    message['To'] = receiver if isinstance(receiver, str) else ','.join(receiver)
+                    message['Subject'] = subject
+                    message.attach(MIMEText(self.__getmaildata(), 'html'))
+                    text = message.as_string()
+                    server.sendmail(sender, receiver, text)
+                    server.quit()
+                    print("Email Sent Successfully")
+            elif port == 587:
+                context = ssl.create_default_context()
+                with smtplib.SMTP(smtp_server, port) as server:
+                    print("Sending Email")
+                    server.ehlo()
+                    server.starttls(context=context)
+                    server.ehlo()
+                    server.ehlo()
+                    server.login(sender, pwd, initial_response_ok=True)
+                    message = MIMEMultipart()
+                    message['From'] = sender
+                    message['To'] = receiver if isinstance(receiver, str) else ','.join(receiver)
+                    message['Subject'] = subject
+                    message.attach(MIMEText(self.__getmaildata(), 'html'))
+                    text = message.as_string()
+                    server.ehlo()
+                    server.sendmail(sender, receiver, text)
+                    server.quit()
+                    print("Email Sent Successfully")
         except Exception as e:
             print("Error: ", e)
 
     def __getmaildata(self):
         return self.__mail_data
 
-    def __getrawdata(self):
-        return self.__m_row
+    def __getrawdata(self, IsAll=True):
+        if IsAll:
+            return self.__m_row
+        else:
+            import csv
+            mycsv = self.__m_row[1:]
+            # filter the data based on the condition
+            # skip the header row
+            filtered = [row for row in mycsv if row[3] == 'Inactive' or int(row[4]) in range(0, 14)]
+            # reset the s.no column
+            for i in range(len(filtered)):
+                filtered[i][0] = i + 1
+            # add the header row
+            filtered.insert(0, self.__m_row[0])
+            return filtered
 
-    def print_report(self):
+    def print_report(self, IsAll=True):
         headers = self.__getrawdata()[0]
-        data = self.__getrawdata()[1:]
+        data = self.__getrawdata(IsAll)[1:]
         if not data:
             print("No data to display.")
             return
@@ -197,18 +236,18 @@ class from_file:
 
         return column_widths
 
-    def save_report(self, path, ftype='html'):
+    def save_report(self, path, file_type='html', IsAll=True):
 
-        path = path + "\\" + "report." + ftype
+        path = path + "\\" + "report." + file_type
 
-        if ftype == 'html':
+        if file_type == 'html':
             with open(path, 'w') as f:
-                f.write(self.__compose_email_with_table(self.__getrawdata()))
+                f.write(self.__compose_email_with_table(self.__getrawdata(IsAll)))
         else:
             import csv
             with open(path, 'w', newline='') as f:
                 writer = csv.writer(f)
-                writer.writerows(self.__m_row)
+                writer.writerows(self.__getrawdata(IsAll))
         print("Report Saved to {}".format(path))
 
 
