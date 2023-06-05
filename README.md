@@ -1,6 +1,6 @@
 # CheckSSLCert
-[![Made with Python](https://img.shields.io/badge/Python->=3.6-blue?logo=python&logoColor=white)](https://python.org "Go to Python homepage")
 
+[![Made with Python](https://img.shields.io/badge/Python->=3.6-blue?logo=python&logoColor=white)](https://python.org "Go to Python homepage")
 
 [![Huntroid-India - SSLCheckerr](https://img.shields.io/static/v1?label=Huntroid-India&message=CheckSSLCert&color=blue&logo=github)](https://github.com/Huntroid-India/CheckSSLCert "Go to GitHub repo")
 [![License](https://img.shields.io/badge/License-MIT-blue)](#license)
@@ -11,19 +11,26 @@
 -->
 
 
-CheckSSLCert is a Python library that allows you to check the SSL certificate status for single or multiple domains. It provides an easy way to determine if an SSL certificate is active, the number of days left until it expires, and additional certificate information. 
+CheckSSLCert is a Python library that allows you to check the SSL certificate status for single or multiple domains. It
+provides an easy way to determine if an SSL certificate is active, the number of days left until it expires, and
+additional certificate information.
 
 ## Installation
+
 You can install CheckSSLCert using pip:
+
 ```
 pip install CheckSSLCert
 ```
 
 ## Usage
+
 ### SSL Validation (Single Domain)
-To check the SSL certificate status for a single domain, you can use the ``from_link`` function from ``validate`` class. 
+
+To check the SSL certificate status for a single domain, you can use the ``from_link`` function from ``validate`` class.
 
 _Here's a sample code demonstrating the usage:_
+
 ```
 from CheckSSLCert import validate
 
@@ -45,11 +52,13 @@ print(checker)
 ```
 
 ## Bulk SSL Validation (Multiple Domains - CSV File)
-To check the SSL certificate status for multiple domains, you can use the ``from_file`` function from ``validate`` class. 
 
-_Here's a sample code demonstrating the usage:_
+To check the SSL certificate status for multiple domains, you can use the ``from_file`` function from ``validate``
+class.
 
 ### Print the SSL certificate status report to the console
+
+_Here's a sample code demonstrating the usage:_
 
 ```
 from CheckSSLCert import validate
@@ -64,13 +73,17 @@ checker.print_report()
 checker.print_report(IsAll=False)
 
 ```
+
 **Note:**
-+ If you want to print the complete report, set ``IsAll`` to ``True``.  By default, the full report is printed.
+
++ If you want to print the complete report, set ``IsAll`` to ``True``. By default, the full report is printed.
 + If you want to print the report only for the domains with expired or expiring in 14 days, set ``IsAll`` to ``False``.
 
 ---
 
 ### Send the SSL certificate status report via email
+
+_Here's a sample code demonstrating the usage:_
 
 ```
 from CheckSSLCert import validate
@@ -93,13 +106,20 @@ checker.send_report(mail_config, IsAll=True)
 checker.send_report(mail_config, IsAll=False)
 
 ```
+
 **Note:**
+
++ If you want to you a different mail server, set ``smtp_server`` to the SMTP server address in ``mail_config``.
++ If you want to use TLS, set ``port`` to ``587`` in ``mail_config``.
++ If you want to use SSL, set ``port`` to ``465`` in ``mail_config``.
 + If you want to send the complete report, set ``IsAll`` to ``True``. By default, the full report is sent.
 + If you want to send the report only for the domains with expired or expiring in 14 days, set ``IsAll`` to ``False``.
 
 ---
 
 ### Save the SSL certificate status report to a file
+
+_Here's a sample code demonstrating the usage:_
 
 ```
 from CheckSSLCert import validate
@@ -115,20 +135,24 @@ checker.save_report("C:\Users\YourUsername\Desktop")
 # Save the SSL certificate status report to a file (CSV format)
 checker.save_report("C:\Users\YourUsername\Desktop", file_type="csv")
 ```
+
 **Note:**
+
 + If you want to save the complete report, set ``IsAll`` to ``True``. By default, the full report is saved.
 + If you want to save the report only for the domains with expired or expiring in 14 days, set ``IsAll`` to ``False``.
-+ By default, the report is saved in HTML format. If you want to save the report in CSV format, set ``file_type`` to ``csv``.
-
-
++ By default, the report is saved in HTML format. If you want to save the report in CSV format, set ``file_type``
+  to ``csv``.
 
 ## Domain List File Format
-The domain list file should be in CSV format. The first row should contain the column names. Here's a sample domain list file:
+
+The domain list file should be in CSV format. The first row should contain the column names. Here's a sample domain list
+file:
+
+Click the Download button and Save it as ``domain_list.csv``.
 
 [![CSV - Documentation](https://img.shields.io/badge/Download-CSV-blue?style=for-the-badge)](https://raw.githubusercontent.com/Huntroid-India/CheckSSLCert/main/domain_list.csv "Go to project documentation")
 
 #### File Format
-
 
 | S.No | Website_Name      | Website_URL        |
 |------|-------------------|--------------------|
@@ -136,14 +160,9 @@ The domain list file should be in CSV format. The first row should contain the c
 | 2 | Facebook - Mobile | https://m.facebook.com     |
 | 3 | Twitter           | www.twitter.com    |
 
-
-
-
-
 ## Contribution
+
 Contributions are welcome! If you have any suggestions, improvements, or bug fixes, please submit a pull request.
-
-
 
 ## License
 
