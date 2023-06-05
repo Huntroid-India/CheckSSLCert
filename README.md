@@ -7,7 +7,9 @@
 [![stars - SSLChecker](https://img.shields.io/github/stars/Huntroid-India/CheckSSLCert?style=social)](https://github.com/Huntroid-India/CheckSSLCert)
 [![forks - SSLChecker](https://img.shields.io/github/forks/Huntroid-India/CheckSSLCert?style=social)](https://github.com/Huntroid-India/CheckSSLCert)
 [![issues - SSLCheckerr](https://img.shields.io/github/issues/Huntroid-India/CheckSSLCert)](https://github.com/Huntroid-India/CheckSSLCert/issues)
-<!--[![GitHub release](https://img.shields.io/github/release/Huntroid-India/CheckSSLCert?include_prereleases=&sort=semver&color=blue)](https://github.com/Huntroid-India/CheckSSLCert/releases/)-->
+<!-- [![GitHub release](https://img.shields.io/github/release/Huntroid-India/CheckSSLCert?include_prereleases=&sort=semver&color=blue)](https://github.com/Huntroid-India/CheckSSLCert/releases/)
+-->
+
 
 CheckSSLCert is a Python library that allows you to check the SSL certificate status for single or multiple domains. It provides an easy way to determine if an SSL certificate is active, the number of days left until it expires, and additional certificate information. 
 
@@ -19,11 +21,13 @@ pip install CheckSSLCert
 
 ## Usage
 ### SSL Validation (Single Domain)
-To check the SSL certificate status for a single domain, you can use the from_link function from validate class. Here's a sample code demonstrating the usage:
+To check the SSL certificate status for a single domain, you can use the ``from_link`` function from ``validate`` class. 
+
+_Here's a sample code demonstrating the usage:_
 ```
 from CheckSSLCert import validate
 
-# Create an sslchecker object for the domain
+# Create an from_link object for the domain
 checker = validate.from_link("example.com")
 
 # Check the SSL certificate status
@@ -40,29 +44,85 @@ print("Certificate Info:", info)
 print(checker)
 ```
 
-### Bulk SSL Validation (Multiple Domains - CSV File)
-To check the SSL certificate status for multiple domains, you can use the from_file function from validate class. Here's a sample code demonstrating the usage:
+## Bulk SSL Validation (Multiple Domains - CSV File)
+To check the SSL certificate status for multiple domains, you can use the ``from_file`` function from ``validate`` class. 
+
+_Here's a sample code demonstrating the usage:_
+
+### Print the SSL certificate status report to the console
+
 ```
 from CheckSSLCert import validate
 
-# Create a bulksslchecker object with the path to the domain list file (CSV format)
+# Create a from_file object with the path to the domain list file (CSV format)
 checker = validate.from_file("domain_list.csv")
 
-# Print the SSL certificate status report to the console
+# Print the SSL certificate status report to the console (Full Report)
 checker.print_report()
 
-# Send the SSL certificate status report to an email address
-checker.send_report("sender_address", "sender_password", "receiver_address", "Subject")
-# Note: It is recommended to use an app password for the sender password. It only works with Gmail(Sender).
+# Print the SSL certificate status report to the console (Partial Report)
+checker.print_report(IsAll=False)
+
+```
+**Note:**
++ If you want to print the complete report, set ``IsAll`` to ``True``.  By default, the full report is printed.
++ If you want to print the report only for the domains with expired or expiring in 14 days, set ``IsAll`` to ``False``.
+
+---
+
+### Send the SSL certificate status report via email
+
+```
+from CheckSSLCert import validate
+
+# Create a from_file object with the path to the domain list file (CSV format)
+checker = validate.from_file("domain_list.csv")
+
+# Configure the Mail Server
+mail_config = {'sender': "example@gmail.com",
+               'password': "passward",
+               'receiver': ["example2@gmail.com", "example3@gmail.com"],
+               'subject': "SSL Checker Report",
+               'smtp_server': "smtp.gmail.com",
+               'port': 587}
+
+# Send the SSL certificate status report to an email address (Full Report)
+checker.send_report(mail_config, IsAll=True)
+
+# Send the SSL certificate status report to an email address (Partial Report)
+checker.send_report(mail_config, IsAll=False)
+
+```
+**Note:**
++ If you want to send the complete report, set ``IsAll`` to ``True``. By default, the full report is sent.
++ If you want to send the report only for the domains with expired or expiring in 14 days, set ``IsAll`` to ``False``.
+
+---
+
+### Save the SSL certificate status report to a file
+
+```
+from CheckSSLCert import validate
+
+# Create a from_file object with the path to the domain list file (CSV format)
+checker = validate.from_file("domain_list.csv")
 
 # Save the SSL certificate status report to a file (HTML format)
-checker.save_report("C:\Users\YourUsername\Desktop") # By default HTML is selected
-checker.save_report("C:\Users\YourUsername\Desktop", "html")
+
+# By default, the report is saved in HTML format
+checker.save_report("C:\Users\YourUsername\Desktop") 
 
 # Save the SSL certificate status report to a file (CSV format)
-checker.save_report("C:\Users\YourUsername\Desktop", "csv")
+checker.save_report("C:\Users\YourUsername\Desktop", file_type="csv")
 ```
-### Domain List File Format
+**Note:**
++ If you want to save the complete report, set ``IsAll`` to ``True``. By default, the full report is saved.
++ If you want to save the report only for the domains with expired or expiring in 14 days, set ``IsAll`` to ``False``.
++ By default, the report is saved in HTML format. If you want to save the report in CSV format, set ``file_type`` to ``csv``.
+
+
+
+## Domain List File Format
 The domain list file should be in CSV format. The first row should contain the column names. Here's a sample domain list file:
 
 [![CSV - Documentation](https://img.shields.io/badge/Download-CSV-blue?style=for-the-badge)](https://raw.githubusercontent.com/Huntroid-India/CheckSSLCert/main/domain_list.csv "Go to project documentation")
@@ -82,6 +142,8 @@ The domain list file should be in CSV format. The first row should contain the c
 
 ## Contribution
 Contributions are welcome! If you have any suggestions, improvements, or bug fixes, please submit a pull request.
+
+
 
 ## License
 
