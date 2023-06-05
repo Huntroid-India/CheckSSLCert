@@ -6,8 +6,8 @@
 [![License](https://img.shields.io/badge/License-MIT-blue)](#license)
 [![stars - SSLChecker](https://img.shields.io/github/stars/Huntroid-India/CheckSSLCert?style=social)](https://github.com/Huntroid-India/CheckSSLCert)
 [![forks - SSLChecker](https://img.shields.io/github/forks/Huntroid-India/CheckSSLCert?style=social)](https://github.com/Huntroid-India/CheckSSLCert)
-<!--[![GitHub release](https://img.shields.io/github/release/Huntroid-India/CheckSSLCert?include_prereleases=&sort=semver&color=blue)](https://github.com/Huntroid-India/CheckSSLCert/releases/)-->
 [![issues - SSLCheckerr](https://img.shields.io/github/issues/Huntroid-India/CheckSSLCert)](https://github.com/Huntroid-India/CheckSSLCert/issues)
+<!--[![GitHub release](https://img.shields.io/github/release/Huntroid-India/CheckSSLCert?include_prereleases=&sort=semver&color=blue)](https://github.com/Huntroid-India/CheckSSLCert/releases/)-->
 
 CheckSSLCert is a Python library that allows you to check the SSL certificate status for single or multiple domains. It provides an easy way to determine if an SSL certificate is active, the number of days left until it expires, and additional certificate information. 
 
